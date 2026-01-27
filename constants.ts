@@ -1,11 +1,17 @@
-import { Artist, SocialPost, Booking } from './types';
+import { Artist, ActivityItem, Booking } from './types';
 
 export const ARTISTS: Artist[] = [
   {
     id: '1',
     name: 'Mariana Silva Acústico',
+    artistType: 'solo',
+    formation: 'solo',
     category: 'MPB Voz e Violão',
     location: 'Vila Madalena, SP',
+    eventTypes: ['casamento', 'bodas', 'coquetel'],
+    projectTypes: ['cover'],
+    priceRange: { min: 450, max: 1200 },
+    availability: 'Finais de semana e noites',
     price: 'R$ 450/hora',
     rating: 4.98,
     reviewCount: 124,
@@ -33,8 +39,14 @@ export const ARTISTS: Artist[] = [
   {
     id: '2',
     name: 'Trio Forró Pé de Serra',
+    artistType: 'trio',
+    formation: 'trio',
     category: 'Forró e Baião',
     location: 'Savassi, MG',
+    eventTypes: ['festa junina', 'aniversário', 'evento corporativo'],
+    projectTypes: ['cover', 'autoral'],
+    priceRange: { min: 1200, max: 3000 },
+    availability: 'Disponibilidade total em Junho/Julho',
     price: 'R$ 1.200 p/ evento',
     rating: 4.85,
     reviewCount: 89,
@@ -47,8 +59,14 @@ export const ARTISTS: Artist[] = [
   {
     id: '3',
     name: 'Banda RockVolt',
+    artistType: 'band',
+    formation: 'band',
     category: 'Rock Clássico e 2000s',
     location: 'Copacabana, RJ',
+    eventTypes: ['formatura', 'festa grande', 'casamento'],
+    projectTypes: ['cover'],
+    priceRange: { min: 3000, max: 8000 },
+    availability: 'Sextas e Sábados',
     price: 'A partir de R$ 3.000',
     rating: 5.0,
     reviewCount: 42,
@@ -63,6 +81,11 @@ export const ARTISTS: Artist[] = [
     name: 'DJ Lucas Beat',
     category: 'DJ Open Format',
     location: 'Pinheiros, SP',
+    formation: 'solo',
+    eventTypes: ['festa', 'balada'],
+    projectTypes: ['cover'],
+    priceRange: { min: 600, max: 2000 },
+    availability: 'Noites',
     price: 'R$ 600/hora',
     rating: 4.92,
     reviewCount: 215,
@@ -77,6 +100,11 @@ export const ARTISTS: Artist[] = [
     name: 'Quarteto de Cordas Harmony',
     category: 'Música Clássica',
     location: 'Curitiba, PR',
+    formation: 'band',
+    eventTypes: ['casamento', 'cerimônia'],
+    projectTypes: ['cover'],
+    priceRange: { min: 1800, max: 4000 },
+    availability: 'Agendamento prévio',
     price: 'R$ 1.800 cerimônia',
     rating: 4.99,
     reviewCount: 76,
@@ -91,6 +119,11 @@ export const ARTISTS: Artist[] = [
     name: 'Samba da Ladeira',
     category: 'Roda de Samba',
     location: 'Santa Teresa, RJ',
+    formation: 'band',
+    eventTypes: ['festa', 'churrasco'],
+    projectTypes: ['cover', 'autoral'],
+    priceRange: { min: 1500, max: 3000 },
+    availability: 'Finais de semana',
     price: 'R$ 1.500 p/ tarde',
     rating: 4.75,
     reviewCount: 310,
@@ -105,6 +138,11 @@ export const ARTISTS: Artist[] = [
     name: 'Duo Jazz & Blues',
     category: 'Jazz Instrumental',
     location: 'Florianópolis, SC',
+    formation: 'duo',
+    eventTypes: ['jantar', 'recepção'],
+    projectTypes: ['cover'],
+    priceRange: { min: 700, max: 1500 },
+    availability: 'Noites',
     price: 'R$ 700/hora',
     rating: 4.88,
     reviewCount: 54,
@@ -119,6 +157,11 @@ export const ARTISTS: Artist[] = [
     name: 'Banda Baile Show',
     category: 'Variedades',
     location: 'Goiânia, GO',
+    formation: 'band',
+    eventTypes: ['formatura', 'festa'],
+    projectTypes: ['cover'],
+    priceRange: { min: 5000, max: 10000 },
+    availability: 'Finais de semana',
     price: 'A combinar',
     rating: 4.60,
     reviewCount: 22,
@@ -130,83 +173,80 @@ export const ARTISTS: Artist[] = [
   }
 ];
 
-export const SOCIAL_POSTS: SocialPost[] = [
+export const ACTIVITY_FEED: ActivityItem[] = [
   {
-    id: 'p1',
-    artistId: '7', // Linked to Duo Jazz
-    userHandle: '@SaxDavi',
-    userName: 'Davi Saxofonista',
-    userAvatar: 'https://picsum.photos/seed/saxdavi/100/100',
-    content: 'Solo improvisado no casamento de ontem! A energia estava surreal. 🎷✨ #CasamentoSP #SaxAoVivo',
-    imageUrl: 'https://picsum.photos/seed/post1/600/800',
-    likes: 342,
-    comments: 12,
-    type: 'video'
+    id: 'a1',
+    artistId: '3',
+    type: 'new_video',
+    title: 'Banda RockVolt atualizou o portfólio',
+    description: 'Confira o novo vídeo promocional da turnê 2024.',
+    timestamp: '2 horas atrás',
+    imageUrl: 'https://picsum.photos/seed/concert/600/300'
   },
   {
-    id: 'p2',
-    artistId: '3', // Linked to RockVolt
-    userHandle: '@RockVolt',
-    userName: 'Banda RockVolt',
-    userAvatar: 'https://picsum.photos/seed/rock/100/100',
-    content: 'A energia da galera foi insana! Agenda aberta para Dezembro, restam poucas datas. 🤘🎸',
-    imageUrl: 'https://picsum.photos/seed/concert/600/800',
-    likes: 856,
-    comments: 45,
-    type: 'image'
+    id: 'a2',
+    artistId: '3',
+    type: 'open_project',
+    title: 'Projeto Autoral busca Baixista',
+    description: 'Banda de Indie Rock em Pinheiros procura baixista com experiência e equipamento próprio para gravação de EP.',
+    timestamp: '5 horas atrás',
+    location: 'São Paulo, SP'
   },
   {
-    id: 'p3',
-    artistId: '1', // Linked to Mariana
-    userHandle: '@MariAcustico',
-    userName: 'Mariana Silva',
-    userAvatar: 'https://picsum.photos/seed/mariana/100/100',
-    content: 'Tarde acústica no Bar do Zé. Quem vem pedir uma música?',
-    imageUrl: 'https://picsum.photos/seed/acoustic/600/800',
-    likes: 120,
-    comments: 8,
-    type: 'image'
+    id: 'a3',
+    artistId: '1',
+    type: 'artist_update',
+    title: 'Agenda Aberta: Dezembro',
+    description: 'Mariana Silva liberou novas datas para confraternizações de fim de ano.',
+    timestamp: '1 dia atrás'
   },
   {
-    id: 'p4',
-    artistId: '4', // Linked to DJ Lucas
-    userHandle: '@DjLucas',
-    userName: 'DJ Lucas Beat',
-    userAvatar: 'https://picsum.photos/seed/djlucas/100/100',
-    content: 'Montando o setlist pro fim de semana. Qual não pode faltar? 👇',
-    imageUrl: 'https://picsum.photos/seed/djsetup/600/800',
-    likes: 210,
-    comments: 34,
-    type: 'image'
+    id: 'a4',
+    artistId: '5',
+    type: 'new_artist',
+    title: 'Novo Artista: Quarteto de Cordas Harmony',
+    description: 'Especialistas em cerimônias clássicas acabam de chegar à plataforma.',
+    timestamp: '1 dia atrás',
+    imageUrl: 'https://picsum.photos/seed/violin/600/300'
   }
 ];
 
 export const CLIENT_BOOKINGS: Booking[] = [
-    {
-        id: 'b1',
-        artistName: 'Mariana Silva Acústico',
-        artistImage: 'https://picsum.photos/seed/mariana/100/100',
-        date: '24 Dez, 2024',
-        eventName: 'Ceia de Natal em Família',
-        price: 'R$ 1.350',
-        status: 'confirmed'
-    },
-    {
-        id: 'b2',
-        artistName: 'Banda RockVolt',
-        artistImage: 'https://picsum.photos/seed/rock/100/100',
-        date: '15 Jan, 2025',
-        eventName: 'Aniversário de 30 anos',
-        price: 'R$ 3.000',
-        status: 'pending'
-    },
-    {
-        id: 'b3',
-        artistName: 'DJ Lucas Beat',
-        artistImage: 'https://picsum.photos/seed/djlucas/100/100',
-        date: '10 Nov, 2024',
-        eventName: 'Churrasco da Empresa',
-        price: 'R$ 1.800',
-        status: 'completed'
-    }
+  {
+    id: 'b1',
+    artistName: 'Mariana Silva Acústico',
+    artistImage: 'https://picsum.photos/seed/mariana/100/100',
+    date: '24 Dez, 2024',
+    eventName: 'Ceia de Natal em Família',
+    price: 'R$ 1.350',
+    status: 'confirmed'
+  },
+  {
+    id: 'b2',
+    artistName: 'Banda RockVolt',
+    artistImage: 'https://picsum.photos/seed/rock/100/100',
+    date: '15 Jan, 2025',
+    eventName: 'Aniversário de 30 anos',
+    price: 'R$ 3.000',
+    status: 'pending'
+  },
+  {
+    id: 'b3',
+    artistName: 'DJ Lucas Beat',
+    artistImage: 'https://picsum.photos/seed/djlucas/100/100',
+    date: '10 Nov, 2024',
+    eventName: 'Churrasco da Empresa',
+    price: 'R$ 1.800',
+    status: 'completed'
+  }
+];
+
+export const REPRESENTATIVES = [
+  {
+    id: 'rep1',
+    name: 'Agência Palco',
+    companyName: 'Palco Produções',
+    artistsManaged: ['3', '8'],
+    verified: true
+  }
 ];
